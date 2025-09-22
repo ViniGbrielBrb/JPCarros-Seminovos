@@ -78,17 +78,17 @@
     <p class="intro">Entre em contato conosco preenchendo o formulário ou pelos nossos canais de atendimento abaixo.</p>
     <div class="contato-grid container">
       <form class="contato-form" id="contatoForm">
-        <input type="text" id="nome" placeholder="Seu Nome" required>
-        <input type="email" id="email" placeholder="Seu Email" required>
+        <input type="text" id="nome" placeholder="Seu Nome">
+        <input type="email" id="email" placeholder="Seu Email">
         <textarea id="mensagem" placeholder="Sua Mensagem" rows="5" required></textarea>
-        <button type="submit">Enviar Mensagem</button>
+        <button type="submit">Enviar pelo WhatsApp</button>
       </form>
       <div class="contato-info">
         <h3>Nossos Contatos</h3>
         <p><strong>Telefone:</strong> (81) 99566-7900</p>
         <p><strong>WhatsApp:</strong> (81) 99566-7900</p>
-        <p><strong>Email:</strong> JPveiculos_seminovos@gmail.com</p>
-        <p><strong>Endereço:</strong> Av. Norte Miguel Arraes, 6056 - Pernambuco/Recife</p>
+        <p><strong>Email:</strong> contatoJPveiculos@gmail.com</p>
+        <p><strong>Endereço:</strong> Av. Norte Miguel Arraes, 6056 - Recife/PE</p>
       </div>
     </div>
   </main>
@@ -100,26 +100,41 @@
     </div>
   </footer>
 
-  <!-- SCRIPT PARA WHATSAPP -->
   <script>
-    document.getElementById('contatoForm').addEventListener('submit', function(e) {
-      e.preventDefault(); // impede envio padrão
+    document.addEventListener('DOMContentLoaded', function(){
+      // recupera carro salvo no localStorage
+      let carroSelecionado = null;
+      try {
+        carroSelecionado = JSON.parse(localStorage.getItem('carroSelecionado'));
+      } catch(e) { carroSelecionado = null; }
 
-      const nome = document.getElementById('nome').value;
-      const email = document.getElementById('email').value;
-      const mensagem = document.getElementById('mensagem').value;
+      const mensagemField = document.getElementById('mensagem');
+      if (carroSelecionado) {
+        const modelo = carroSelecionado.nome || '';
+        const ano = carroSelecionado.ano || '';
+        const valor = carroSelecionado.valor || '';
+        mensagemField.value = `Olá, tenho interesse no carro:\n\nModelo: ${modelo}\nAno: ${ano}\nValor: ${valor}\n\nGostaria de mais informações, por favor.`;
+      }
 
-      // Mensagem formatada
-      const texto = `Olá! Meu nome é ${nome} (%0AEmail: ${email})%0AMensagem: ${mensagem}`;
+      // envio pelo WhatsApp
+      document.getElementById('contatoForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        const nome = document.getElementById('nome').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const mensagem = mensagemField.value.trim();
 
-      // Coloque seu número do WhatsApp com DDI (ex: 55 para Brasil)
-      const numeroWhatsApp = '5581995667900';
+        let texto = '';
+        if (nome) texto += `Nome: ${nome}\n`;
+        if (email) texto += `Email: ${email}\n\n`;
+        texto += mensagem || 'Olá, tenho interesse em um veículo.';
 
-      const link = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
-      window.open(link, '_blank');
+        const NUMERO_LOJA = '5581995667900'; // <-- altere para o WhatsApp real
+        const url = `https://wa.me/${NUMERO_LOJA}?text=${encodeURIComponent(texto)}`;
+
+        window.open(url, '_blank');
+      });
     });
   </script>
-
 </body>
 </html>
 
