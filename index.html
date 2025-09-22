@@ -4,79 +4,258 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JP Veículos - Seminovos</title>
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
   <style>
-    /* ================= RESET ================= */
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Roboto', sans-serif; }
-    body { display:flex; flex-direction:column; min-height:100vh; background:#f5f5f5; color:#333; }
-    main { flex:1; }
-    a { text-decoration:none; color:inherit; cursor:pointer; }
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
 
-    /* ================= HEADER ================= */
-    header { background:#111; padding:15px 0; color:#fff; position:sticky; top:0; z-index:1000; }
-    .container-header { width:90%; max-width:1400px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; }
-    .logo-box { display:flex; align-items:center; gap:10px; }
-    .logo { font-size:35px; font-weight:bold; color:#fff; }
-    .logo span { color:#e60000; }
-    nav ul.menu { list-style:none; display:flex; gap:30px; }
-    nav ul.menu li a { font-weight:bold; font-size:1rem; color:#fff; transition: color 0.3s; }
-    nav ul.menu li a.active, nav ul.menu li a:hover { color:#e60000; }
+body {
+  background-color: #f5f5f5;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-    /* ================= BANNER ================= */
-    .banner { position:relative; text-align:center; color:#fff; overflow:hidden; height:500px; }
-    .banner img { width:100%; height:100%; object-fit:cover; }
-    .banner-content { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(0,0,0,0.6); padding:20px 30px; border-radius:10px; min-width:260px; }
-    .banner-content h1 { font-size:2.8rem; margin-bottom:10px; }
-    .banner-content p { font-size:1.2rem; margin-bottom:15px; }
-    .btn { display:inline-block; background-color:#e60000; color:#fff; padding:10px 20px; border-radius:6px; font-weight:600; transition:background 0.25s ease, transform 0.12s ease; }
-    .btn:hover { background-color:#ff1a1a; transform:translateY(-2px); }
+main { flex: 1; }
+a { text-decoration: none; color: inherit; cursor: pointer; }
 
-    /* ================= DESTAQUES ================= */
-    .container { width:90%; max-width:1200px; margin:0 auto; }
-    .carros-home { padding:60px 20px; }
-    .carros-home h2 { text-align:center; font-size:2rem; margin-bottom:30px; color:#e60000; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; justify-items:center; }
-    .card { background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.06); display:flex; flex-direction:column; transition:transform 0.2s,box-shadow 0.2s; width:100%; max-width:300px; }
-    .card:hover { transform:translateY(-5px); box-shadow:0 12px 26px rgba(0,0,0,0.12); }
-    .card img { width:100%; height:180px; object-fit:cover; border-radius:10px 10px 0 0; }
-    .card h3 { font-size:1.1rem; color:#111; padding:12px 14px 0 14px; }
-    .card .preco { font-weight:800; color:#e60000; margin:8px 14px 14px 14px; font-size:1rem; }
+/* ================= CONTAINER ================= */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-    /* ================= SOBRE ================= */
-    .sobre { background:#fff; padding:60px 20px; text-align:center; }
-    .sobre h2 { font-size:2rem; color:#e60000; margin-bottom:20px; }
-    .sobre p { max-width:800px; margin:0 auto; font-size:1.1rem; line-height:1.6; }
+/* ================= HEADER ================= */
+header {
+  background-color: #111;
+  padding: 15px 0;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-    /* ================= SERVIÇOS ================= */
-    .servicos { background:#111; color:#fff; padding:60px 20px; text-align:center; }
-    .servicos h2 { font-size:2rem; color:#e60000; margin-bottom:30px; }
-    .servicos-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:30px; }
-    .servico { background:#222; padding:30px; border-radius:10px; transition:transform 0.2s; }
-    .servico:hover { transform:translateY(-5px); }
-    .servico i { font-size:2rem; color:#e60000; margin-bottom:15px; }
-    .servico h3 { font-size:1.2rem; margin-bottom:10px; }
+.container-header {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    /* ================= CONTATO ================= */
-    .contato { background:#f5f5f5; padding:60px 20px; text-align:center; }
-    .contato h2 { font-size:2rem; color:#e60000; margin-bottom:20px; }
-    .contato p { margin-bottom:20px; }
+.logo-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-    /* ================= RODAPÉ ================= */
-    footer { background:#111; color:#fff; padding:25px 20px; text-align:center; }
-    footer p { margin-bottom:10px; }
-    footer .social a { margin:0 10px; color:#fff; font-size:1.2rem; transition:color 0.3s; }
-    footer .social a:hover { color:#e60000; }
+.logo-img { width: 60px; height: auto; border-radius: 8px; }
+.logo { font-size: 35px; font-weight: bold; color: #fff; }
+.logo span { color: #e60000; }
 
-    /* ================= RESPONSIVO ================= */
-    @media(max-width:992px){.logo{font-size:28px}.banner-content h1{font-size:2rem}}
-    @media(max-width:768px){.container-header{flex-direction:column;gap:10px}nav ul.menu{flex-direction:column;gap:10px;align-items:center}.banner-content{padding:15px}}
-    @media(max-width:420px){.logo{font-size:24px}.banner-content h1{font-size:1.4rem}.banner-content p{font-size:1rem}.btn{padding:8px 15px;font-size:.9rem}.grid{grid-template-columns:1fr;gap:15px}}
+nav ul.menu {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+nav ul.menu li a {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+nav ul.menu li a.active,
+nav ul.menu li a:hover { color: #e60000; }
+
+/* ================= BANNER ================= */
+.banner {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+  height: 500px;
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.6);
+  padding: 20px 30px;
+  border-radius: 10px;
+  min-width: 260px;
+}
+
+.banner-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+
+.banner-content p {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #e60000;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.25s ease, transform 0.12s ease;
+}
+
+.btn:hover {
+  background-color: #ff1a1a;
+  transform: translateY(-2px);
+}
+
+/* ================= DESTAQUES ================= */
+.carros-home { padding: 60px 20px; }
+.carros-home h2 { text-align: center; font-size: 2rem; margin-bottom: 30px; color: #e60000; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%;
+  max-width: 300px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.12);
+}
+
+.card img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px 10px 0 0; }
+.card h3 { font-size: 1.1rem; color: #111; padding: 12px 14px 0 14px; }
+.card .preco { font-weight: 800; color: #e60000; margin: 8px 14px 14px 14px; font-size: 1rem; }
+
+/* ================= SOBRE ================= */
+.sobre {
+  background: #fff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.sobre h2 {
+  font-size: 2rem;
+  color: #e60000;
+  margin-bottom: 20px;
+}
+
+.sobre p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* ================= SERVIÇOS ================= */
+.servicos {
+  background: #111;
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.servicos h2 { font-size: 2rem; color: #e60000; margin-bottom: 30px; }
+.servicos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.servico {
+  background: #222;
+  padding: 30px;
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+.servico:hover { transform: translateY(-5px); }
+.servico i { font-size: 2rem; color: #e60000; margin-bottom: 15px; }
+.servico h3 { font-size: 1.2rem; margin-bottom: 10px; }
+
+/* ================= CONTATO ================= */
+.contato {
+  background: #f5f5f5;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.contato h2 { font-size: 2rem; color: #e60000; margin-bottom: 20px; }
+.contato p { margin-bottom: 20px; }
+
+.contato .btn { margin-top: 10px; }
+
+/* ================= RODAPÉ ================= */
+footer {
+  background-color: #111;
+  color: #fff;
+  padding: 25px 20px;
+  text-align: center;
+}
+
+footer p { margin-bottom: 10px; }
+footer .social a {
+  margin: 0 10px;
+  color: #fff;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+footer .social a:hover { color: #e60000; }
+
+/* ================= RESPONSIVO ================= */
+@media (max-width: 992px) {
+  .logo { font-size: 28px; }
+  .banner-content h1 { font-size: 2rem; }
+}
+
+@media (max-width: 768px) {
+  .container-header { flex-direction: column; gap: 10px; }
+  nav ul.menu { flex-direction: column; gap: 10px; align-items: center; }
+  .banner-content { padding: 15px; }
+}
+
+@media (max-width: 420px) {
+  .logo { font-size: 24px; }
+  .banner-content h1 { font-size: 1.4rem; }
+  .banner-content p { font-size: 1rem; }
+  .btn { padding: 8px 15px; font-size: 0.9rem; }
+  .grid { grid-template-columns: 1fr; gap: 15px; }
+}
   </style>
 </head>
 <body>
@@ -85,14 +264,15 @@
   <header>
     <div class="container-header">
       <div class="logo-box">
+        
         <div class="logo">JP <span>Veículos</span></div>
       </div>
       <nav>
         <ul class="menu">
-          <li><a href="/loja-de-carros/index.html" class="active">Início</a></li>
-          <li><a href="/loja-de-carros/carros.html">Carros</a></li>
-          <li><a href="/loja-de-carros/sobre.html">Sobre</a></li>
-          <li><a href="/loja-de-carros/contato.html">Contato</a></li>
+          <li><a href="index.html" class="active">Início</a></li>
+          <li><a href="carros.html">Carros</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
         </ul>
       </nav>
     </div>
@@ -100,11 +280,11 @@
 
   <!-- BANNER -->
   <section class="banner">
-    <img src="/loja-de-carros/images/faixada.jpg" alt="Carros seminovos">
+    <img src="faixada.jpg" alt="Carros seminovos">
     <div class="banner-content">
       <h1>Seu próximo carro está aqui</h1>
       <p>Seminovos com qualidade e confiança</p>
-      <a href="/loja-de-carros/carros.html" class="btn">Ver Carros</a>
+      <a href="carros.html" class="btn">Ver Carros</a>
     </div>
   </section>
 
@@ -114,17 +294,17 @@
       <h2>Destaques</h2>
       <div class="grid">
         <article class="card">
-          <img src="/loja-de-carros/images/carro2.jpg" alt="Onix 2020">
+          <img src="carro2.jpg" alt="Onix 2020">
           <h3>Onix 2020</h3>
           <p class="preco">R$ 58.000</p>
         </article>
         <article class="card">
-          <img src="/loja-de-carros/images/carro3.jpg" alt="BMW 320i 2018">
+          <img src="carro3.jpg" alt="BMW 320i 2018">
           <h3>BMW 320i 2018</h3>
           <p class="preco">R$ 118.000</p>
         </article>
         <article class="card">
-          <img src="/loja-de-carros/images/carro4.jpg" alt="Honda Civic 2019">
+          <img src="carro4.jpg" alt="Honda Civic 2019">
           <h3>Honda Civic 2019</h3>
           <p class="preco">R$ 92.000</p>
         </article>
@@ -168,7 +348,7 @@
     <section class="contato">
       <h2>Fale Conosco</h2>
       <p>Entre em contato para saber mais ou agendar uma visita.</p>
-      <a href="/loja-de-carros/contato.html" class="btn">Entrar em Contato</a>
+      <a href="contato.html" class="btn">Entrar em Contato</a>
     </section>
   </main>
 
@@ -184,5 +364,7 @@
 
 </body>
 </html>
+
+
 
 
