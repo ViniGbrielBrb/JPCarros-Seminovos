@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JP Veículos — Carros</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .carros-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .carro-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .btn-comprar, .btn-filtrar, .btn-reset { cursor: pointer; }
+    @media (max-width: 768px) {
+      .carros-grid { grid-template-columns: 1fr; gap: 15px; }
+      .filtros-form { display: flex; flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container container-header">
+      <div class="brand">
+        <div class="logo-text">JP <span>Veículos</span></div>
+      </div>
+
+      <nav aria-label="Menu principal">
+        <ul class="menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="carros.html" class="active">Carros</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- TÍTULO -->
+  <section class="carros-title">
+    <div class="container">
+      <h2>🚗 Todos os Carros</h2>
+      <p class="subtitle">Escolha seu seminovo — qualidade e confiança</p>
+    </div>
+  </section>
+
+  <!-- FILTROS -->
+  <section class="filtros">
+    <div class="container">
+      <form class="filtros-form" id="filtrosForm" role="search" aria-label="Filtrar carros">
+        <label class="sr-only" for="marca">Marca</label>
+        <select id="marca" name="marca" aria-label="Filtrar por marca">
+          <option value="">Todas as marcas</option>
+          <option value="chevrolet">Chevrolet</option>
+          <option value="bmw">BMW</option>
+          <option value="honda">Honda</option>
+          <option value="toyota">Toyota</option>
+          <option value="vw">Volkswagen</option>
+        </select>
+
+        <label class="sr-only" for="ano">Ano</label>
+        <select id="ano" name="ano" aria-label="Filtrar por ano">
+          <option value="">Todos os anos</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+          <option value="2019">2019</option>
+          <option value="2018">2018</option>
+        </select>
+
+        <label class="sr-only" for="buscar">Pesquisar</label>
+        <input id="buscar" type="search" placeholder="Pesquisar modelo, ano ou preço..." aria-label="Pesquisar carro">
+
+        <div class="filtros-actions">
+          <button type="submit" class="btn-filtrar">Filtrar</button>
+          <button type="button" id="resetFilters" class="btn-reset">Limpar</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- GRID DE CARROS -->
+  <main>
+    <section class="carros-container">
+      <div class="container carros-grid" id="carrosGrid">
+
+        <article class="carro-card" data-marca="chevrolet" data-ano="2020" data-modelo="onix 2020">
+          <img src="carro1.jpg" alt="Onix 2020" loading="lazy">
+          <div class="carro-info">
+            <h3>Onix 2020</h3>
+            <p class="preco">R$ 58.000</p>
+            <a href="#" class="btn-comprar" aria-label="Comprar Onix 2020">Comprar</a>
+          </div>
+        </article>
+
+        <article class="carro-card" data-marca="bmw" data-ano="2018" data-modelo="bmw 320i 2018">
+          <img src="carro2.jpg" alt="BMW 320i 2018" loading="lazy">
+          <div class="carro-info">
+            <h3>BMW 320i 2018</h3>
+            <p class="preco">R$ 118.000</p>
+            <a href="#" class="btn-comprar" aria-label="Comprar BMW 320i 2018">Comprar</a>
+          </div>
+        </article>
+
+        <article class="carro-card" data-marca="honda" data-ano="2019" data-modelo="honda civic 2019">
+          <img src="carro3.jpg" alt="Honda Civic 2019" loading="lazy">
+          <div class="carro-info">
+            <h3>Honda Civic 2019</h3>
+            <p class="preco">R$ 92.000</p>
+            <a href="#" class="btn-comprar" aria-label="Comprar Honda Civic 2019">Comprar</a>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="container">
+        <p id="noResults" class="no-results" hidden>Nenhum carro encontrado.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="container container-footer">
+      <p>© 2025 JP Veículos - Todos os direitos reservados</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT DE FILTRAGEM -->
+  <script>
+    (function () {
+      const form = document.getElementById('filtrosForm');
+      const marca = document.getElementById('marca');
+      const ano = document.getElementById('ano');
+      const buscar = document.getElementById('buscar');
+      const resetBtn = document.getElementById('resetFilters');
+      const carrosGrid = document.getElementById('carrosGrid');
+      const noResults = document.getElementById('noResults');
+
+      function filterCars(e) {
+        if (e) e.preventDefault();
+        const marcaVal = marca.value.trim().toLowerCase();
+        const anoVal = ano.value.trim();
+        const buscaVal = buscar.value.trim().toLowerCase();
+
+        const cards = Array.from(carrosGrid.querySelectorAll('.carro-card'));
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+          const dataMarca = (card.dataset.marca || '').toLowerCase();
+          const dataAno = (card.dataset.ano || '').toLowerCase();
+          const dataModelo = (card.dataset.modelo || '').toLowerCase();
+          let matches = true;
+
+          if (marcaVal && dataMarca !== marcaVal) matches = false;
+          if (anoVal && dataAno !== anoVal) matches = false;
+          if (buscaVal) {
+            const precoText = (card.querySelector('.preco')?.textContent || '').toLowerCase();
+            if (!(dataModelo.includes(buscaVal) || dataMarca.includes(buscaVal) || dataAno.includes(buscaVal) || precoText.includes(buscaVal))) {
+              matches = false;
+            }
+          }
+
+          card.style.display = matches ? '' : 'none';
+          if (matches) visibleCount++;
+        });
+
+        noResults.hidden = visibleCount > 0;
+      }
+
+      form.addEventListener('submit', filterCars);
+      marca.addEventListener('change', filterCars);
+      ano.addEventListener('change', filterCars);
+      buscar.addEventListener('input', filterCars);
+
+      resetBtn.addEventListener('click', function () {
+        marca.value = '';
+        ano.value = '';
+        buscar.value = '';
+        filterCars();
+      });
+
+      filterCars();
+    })();
+  </script>
+</body>
+</html>

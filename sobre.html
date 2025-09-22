@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre - JP Veículos</title>
+
+  <!-- Fonte e ícones -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ================= RESET BÁSICO ================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    main { flex: 1; }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ================= HEADER ================= */
+    header {
+      background-color: #111;
+      padding: 15px 0;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .container-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-img { width: 60px; height: auto; }
+    .logo { font-size: 1.8rem; font-weight: bold; color: #fff; }
+    .logo span { color: #e60000; }
+
+    nav ul.menu {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul.menu li a {
+      font-weight: bold;
+      color: #fff;
+      transition: color 0.3s;
+    }
+
+    nav ul.menu li a.active,
+    nav ul.menu li a:hover {
+      color: #e60000;
+    }
+
+    /* ================= SOBRE ================= */
+    .sobre {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .sobre h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #e60000;
+    }
+
+    .sobre p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .sobre-imgs {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .sobre-imgs img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .sobre-imgs img:hover {
+      transform: scale(1.05);
+    }
+
+    /* ================= RODAPÉ ================= */
+    footer {
+      background-color: #111;
+      color: #fff;
+      padding: 25px 0;
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    /* ================= RESPONSIVO ================= */
+    @media (max-width: 768px) {
+      .container-header { flex-direction: column; gap: 15px; }
+      nav ul.menu { flex-direction: column; gap: 15px; }
+      .sobre-imgs { flex-direction: column; }
+    }
+
+    @media (max-width: 420px) {
+      .logo { font-size: 1.5rem; }
+      .sobre h2 { font-size: 1.5rem; }
+      .sobre p { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABEÇALHO -->
+  <header>
+    <div class="container container-header">
+      <div class="logo-box">
+        <div class="logo">JP <span>Veículos</span></div>
+      </div>
+      <nav aria-label="Menu principal">
+        <ul class="menu">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="carros.html">Carros</a></li>
+          <li><a href="sobre.html" class="active" aria-current="page">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- SEÇÃO SOBRE -->
+  <main class="sobre container">
+    <h2>Sobre Nós</h2>
+    <p>
+      A <strong>JP Veículos</strong> é uma loja especializada em carros seminovos, prezando pela confiança e satisfação de seus clientes.
+      Trabalhamos com os melhores modelos e preços justos, oferecendo transparência em todas as negociações.
+    </p>
+    <p>
+      Nossa missão é entregar veículos de qualidade com procedência garantida, sempre oferecendo o melhor atendimento e suporte
+      para que você saia da nossa loja com o carro dos seus sonhos.
+    </p>
+
+    <div class="sobre-imgs">
+      <img src="faixada.jpg" alt="Loja JP Veículos">
+      <img src="carro2.jpg" alt="Carro seminovo em destaque">
+    </div>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="container">
+      <p>© 2025 JP Veículos - Todos os direitos reservados</p>
+    </div>
+  </footer>
+
+</body>
+</html>

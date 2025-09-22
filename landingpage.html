@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JP Veículos - Promoção de Carros Semi-Novos</title>
+  <style>
+    :root {
+      --cor-principal: #c00000; /* vermelho da marca */
+      --cor-escura: #7a0000;   /* vermelho escuro */
+      --cor-secundaria: #fff;  /* branco para contrastes */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== HEADER HERO ===== */
+    .header {
+      background: linear-gradient(135deg, var(--cor-principal), var(--cor-escura));
+      padding: 60px 20px;
+      color: var(--cor-secundaria);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .logo {
+      max-width: 180px;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: 42px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      margin-bottom: 30px;
+      max-width: 600px;
+    }
+
+    .cta-button {
+      background-color: var(--cor-secundaria);
+      color: var(--cor-principal);
+      border: none;
+      padding: 16px 32px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background-color: #ffe5e5;
+    }
+
+    /* ===== SEÇÃO PROMOÇÃO ===== */
+    .promocao {
+      padding: 60px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      background-color: #fff4f4;
+    }
+
+    .carro-card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      max-width: 280px;
+      flex: 1 1 250px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .carro-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .carro-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .carro-info {
+      padding: 15px;
+    }
+
+    .carro-info h3 {
+      font-size: 20px;
+      color: var(--cor-principal);
+      margin-bottom: 10px;
+    }
+
+    .carro-info p {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .preco-antigo {
+      text-decoration: line-through;
+      color: #777;
+      margin-right: 10px;
+    }
+
+    .preco-promocao {
+      color: var(--cor-principal);
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .botao-comprar {
+      margin-top: 10px;
+      background-color: var(--cor-principal);
+      color: #fff;
+      border: none;
+      padding: 12px;
+      width: 80%;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .botao-comprar:hover {
+      background-color: var(--cor-escura);
+    }
+
+    /* ===== RODAPÉ ===== */
+    .footer {
+      background: var(--cor-escura);
+      color: var(--cor-secundaria);
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    /* ===== RESPONSIVO ===== */
+    @media (max-width: 768px) {
+      .hero-title { font-size: 32px; }
+      .hero-subtitle { font-size: 16px; }
+      .carro-card img { height: 150px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER / HERO -->
+  <header class="header">
+    
+    <h1 class="hero-title">Promoção Especial de Carros Semi-Novos!</h1>
+    <p class="hero-subtitle">Aproveite condições imperdíveis e saia de carro novo hoje mesmo. Estoque limitado!</p>
+    <button class="cta-button" onclick="window.open('https://wa.me/5511999999999?text=Olá,+quero+aproveitar+a+promoção+JP+Veículos!', '_blank')">
+      📲 Quero Aproveitar a Promoção
+    </button>
+  </header>
+
+  <!-- SEÇÃO DE CARROS EM PROMOÇÃO -->
+  <section class="promocao">
+    <!-- Carro 1 -->
+    <div class="carro-card">
+      <img src="carro1.jpg" alt="Honda Civic 2020">
+      <div class="carro-info">
+        <h3>Honda Civic 2020</h3>
+        <p><span class="preco-antigo">R$ 85.000</span> <span class="preco-promocao">R$ 79.900</span></p>
+        <button class="botao-comprar" onclick="window.open('https://wa.me/5511999999999?text=Quero+o+Honda+Civic+2020+JP+Veículos!', '_blank')">Comprar</button>
+      </div>
+    </div>
+
+    <!-- Carro 2 -->
+    <div class="carro-card">
+      <img src="carro2.jpg" alt="Toyota Corolla 2019">
+      <div class="carro-info">
+        <h3>Toyota Corolla 2019</h3>
+        <p><span class="preco-antigo">R$ 78.000</span> <span class="preco-promocao">R$ 72.500</span></p>
+        <button class="botao-comprar" onclick="window.open('https://wa.me/5511999999999?text=Quero+o+Toyota+Corolla+2019+JP+Veículos!', '_blank')">Comprar</button>
+      </div>
+    </div>
+
+    <!-- Carro 3 -->
+    <div class="carro-card">
+      <img src="carro3.jpg" alt="Volkswagen Golf 2018">
+      <div class="carro-info">
+        <h3>Volkswagen Golf 2018</h3>
+        <p><span class="preco-antigo">R$ 70.000</span> <span class="preco-promocao">R$ 65.900</span></p>
+        <button class="botao-comprar" onclick="window.open('https://wa.me/5511999999999?text=Quero+o+Volkswagen+Golf+2018+JP+Veículos!', '_blank')">Comprar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer class="footer">
+    🚘 JP Veículos - Promoção Especial | © 2025 Todos os direitos reservados
+  </footer>
+
+</body>
+</html>
