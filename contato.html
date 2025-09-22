@@ -20,7 +20,6 @@
     header{background:#111;padding:15px 0;color:#fff;position:sticky;top:0;z-index:1000;}
     .container-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;}
     .logo-box{display:flex;align-items:center;gap:10px;}
-    .logo-img{width:60px;height:auto;}
     .logo{font-size:1.8rem;font-weight:bold;color:#fff;}
     .logo span{color:#e60000;}
     nav ul.menu{list-style:none;display:flex;gap:25px;}
@@ -78,18 +77,18 @@
     <h2>Fale Conosco</h2>
     <p class="intro">Entre em contato conosco preenchendo o formulário ou pelos nossos canais de atendimento abaixo.</p>
     <div class="contato-grid container">
-      <form class="contato-form">
-        <input type="text" placeholder="Seu Nome" required>
-        <input type="email" placeholder="Seu Email" required>
-        <textarea placeholder="Sua Mensagem" rows="5" required></textarea>
+      <form class="contato-form" id="contatoForm">
+        <input type="text" id="nome" placeholder="Seu Nome" required>
+        <input type="email" id="email" placeholder="Seu Email" required>
+        <textarea id="mensagem" placeholder="Sua Mensagem" rows="5" required></textarea>
         <button type="submit">Enviar Mensagem</button>
       </form>
       <div class="contato-info">
         <h3>Nossos Contatos</h3>
-        <p><strong>Telefone:</strong> (11) 99999-9999</p>
-        <p><strong>WhatsApp:</strong> (11) 98888-8888</p>
-        <p><strong>Email:</strong> contato@jpveiculos.com.br</p>
-        <p><strong>Endereço:</strong> Av. dos Carros, 123 - São Paulo/SP</p>
+        <p><strong>Telefone:</strong> (81) 99566-7900</p>
+        <p><strong>WhatsApp:</strong> (81) 99566-7900</p>
+        <p><strong>Email:</strong> JPveiculos_seminovos@gmail.com</p>
+        <p><strong>Endereço:</strong> Av. Norte Miguel Arraes, 6056 - Pernambuco/Recife</p>
       </div>
     </div>
   </main>
@@ -101,5 +100,27 @@
     </div>
   </footer>
 
+  <!-- SCRIPT PARA WHATSAPP -->
+  <script>
+    document.getElementById('contatoForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // impede envio padrão
+
+      const nome = document.getElementById('nome').value;
+      const email = document.getElementById('email').value;
+      const mensagem = document.getElementById('mensagem').value;
+
+      // Mensagem formatada
+      const texto = `Olá! Meu nome é ${nome} (%0AEmail: ${email})%0AMensagem: ${mensagem}`;
+
+      // Coloque seu número do WhatsApp com DDI (ex: 55 para Brasil)
+      const numeroWhatsApp = '5581995667900';
+
+      const link = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
+      window.open(link, '_blank');
+    });
+  </script>
+
 </body>
 </html>
+
+
